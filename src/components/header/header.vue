@@ -33,30 +33,52 @@
       <i class="icon icon-keyboard_arrow_right"></i>      
     </div>
     <!-- detail -->
-    <div class="detail" v-show="detailShow">
-      <div class="detail-wrapper clearfix">
-        <div class="detail-main">
-          {{seller.bulletin}}
-          {{seller.bulletin}}
-          {{seller.bulletin}}
-          {{seller.bulletin}}
-          {{seller.bulletin}}
-          {{seller.bulletin}}
-          {{seller.bulletin}}
-          {{seller.bulletin}}
-          {{seller.bulletin}}
-          {{seller.bulletin}}
-          {{seller.bulletin}}
+    <transition name="panel-fade">
+      <div class="detail" v-show="detailShow">
+        <div class="detail-wrapper clearfix">
+          <div class="detail-main">
+            <h1 class="name">{{seller.name}}</h1>
+            <div class="star-wrap">
+              <!-- star 组件 -->
+              <star :size="48" :score="seller.score"></star>
+            </div>
+
+            <!-- 优惠信息 -->
+            <div class="title">
+              <div class="line"></div>
+              <div class="text">优惠信息</div>
+              <div class="line"></div>
+            </div>
+            <ul class="supports" v-if="seller.supports">
+              <li class="support-item" v-for="item in seller.supports">
+                <span class="icon" :class="classMap[item.type]"></span>
+                <span class="text">{{item.description}}</span>
+              </li>
+            </ul>
+
+            <!-- 公告 -->
+            <div class="title">
+              <div class="line"></div>
+              <div class="text">商家公告</div>
+              <div class="line"></div>
+            </div>
+            <div class="bulletin">
+              <p class="content">{{seller.bulletin}}</p>
+            </div>
+
+          </div>
+        </div>
+        <div class="detail-close">
+          <i class="icon icon-close" @click="hideDetail"></i>
         </div>
       </div>
-      <div class="detail-close">
-        <i class="icon icon-close" @click="hideDetail"></i>
-      </div>
-    </div>
+    </transition>
   </header>
 </template>
 
 <script type="text/ecmascript-6">
+  import Star from 'components/star/star.vue'
+
   export default {
     props: {
       seller: {
@@ -84,6 +106,9 @@
         'invoice',
         'special'
       ]
+    },
+    components: {
+      star: Star
     }
   }
 </script>
@@ -96,6 +121,7 @@
     background: rgba(7,17,27,0.5)
     position: relative
     overflow: hidden
+    
     .content-wrapper
       position: relative
       padding: 24px 12px 18px 24px
@@ -207,6 +233,18 @@
       bottom: 0
       left: 0
       filter: blur(10px)
+    .panel-fade-enter-active 
+      transition: all .8s ease;
+    
+    .panel-fade-leave-active 
+      transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+
+    .panel-fade-enter,
+    .panel-fade-leave-to
+      background: rgba(7,17,27,.8)
+      opacity: 1;
+      transform: rotateX(-90deg)
+    
     .detail 
       position: fixed;
       z-index: 100
@@ -216,14 +254,78 @@
       height: 100%
       overflow: auto
       background: rgba(7,17,27,.8)
-      
+      transform: rotateX(0)
+      transform-origin: 50% 0;
+      transition: all .4s;
+
       .detail-wrapper 
+        width: 100%
         min-height: 100%
         overflow: auto
         .detail-main
           margin-top: 64px
           padding-bottom: 64px
-
+          padding-left: 36px
+          padding-right: 36px
+          .name
+            line-height 16px
+            font-size: 16px
+            text-align: center
+          .star-wrap
+            margin-top: 18px
+            text-align: center
+            padding: 2px 0
+          // 两边横线的小标题
+          .title
+            display: flex;
+            margin: 28px 0  0
+            .line
+              flex: 1
+              position: relative
+              top:-6px
+              border-bottom: 1px solid rgba(255,255,255,.2)
+            .text 
+              padding:0 12px
+              font-size: 14px
+              font-weight: 700
+          
+          // 优惠信息内容
+          .supports
+            margin-top: 24px
+            line-height: 16px
+            font-size: 12px
+            font-weight: 200
+            .support-item
+              margin-top: 12px
+            .icon
+              display: inline-block
+              vertical-align: top
+              width:16px
+              height:16px
+              margin-right: 4px;
+              background-size:16px 16px
+              background-repeat: no-repeat
+              &.decrease
+                bg-image('decrease_2')
+              &.discount
+                bg-image('discount_2')
+              &.guarantee
+                bg-image('guarantee_2')
+              &.invoice
+                bg-image('invoice_2')
+              &.special
+                bg-image('special_2')
+              .text
+                margin-left: 6px
+          
+          // 公告
+          .bulletin 
+            margin-top: 24px
+            line-height: 24px
+            font-size: 12px
+            font-weight: 200
+            .content
+              text-indent: 2em
       .detail-close
         position: relative
         width: 32px
@@ -231,5 +333,5 @@
         margin: -64px auto 0
         clear: both
         .icon
-          font-size: 34px
+          font-size: 32px
 </style>
