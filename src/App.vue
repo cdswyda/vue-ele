@@ -45,6 +45,8 @@ export default {
   // text-align: center;
   // color: #2c3e50;
   // margin-top: 60px;
+  perspective: 1000px;
+  min-height: 100vh;
 }
 .nav
   display: flex

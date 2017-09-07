@@ -234,16 +234,17 @@
       left: 0
       filter: blur(10px)
     .panel-fade-enter-active 
-      transition: all .8s ease;
+      transition: all .3s ease;
     
     .panel-fade-leave-active 
-      transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+      transition: all .4s cubic-bezier(1.0, 0.5, 0.8, 1.0);
 
     .panel-fade-enter,
     .panel-fade-leave-to
       background: rgba(7,17,27,.8)
-      opacity: 1;
+      opacity: 0
       transform: rotateX(-90deg)
+      transform-origin: 50% 0;
     
     .detail 
       position: fixed;
@@ -254,9 +255,11 @@
       height: 100%
       overflow: auto
       background: rgba(7,17,27,.8)
-      transform: rotateX(0)
       transform-origin: 50% 0;
-      transition: all .4s;
+      
+      // transform: rotateX(0)
+      // transition: all .4s
+      // transform-origin: 50% 0
 
       .detail-wrapper 
         width: 100%
