@@ -142,7 +142,7 @@
             display: inline-block
             width: 30px
             height: 18px
-            bg-image('brand')
+            bg-image('./images/brand')
             background-size: 30px 18px
             background-repeat: no-repeat
             vertical-align: top
@@ -166,15 +166,15 @@
             background-size: 12px 12px
             background-repeat: no-repeat
             &.decrease
-              bg-image('decrease_1')
+              bg-image('./images/decrease_1')
             &.discount
-              bg-image('discount_1')
+              bg-image('./images/discount_1')
             &.guarantee
-              bg-image('guarantee_1')
+              bg-image('./images/guarantee_1')
             &.invoice
-              bg-image('invoice_1')
+              bg-image('./images/invoice_1')
             &.special
-              bg-image('special_1')
+              bg-image('./images/special_1')
           .text
             line-height: 12px
             font-size: 10px
@@ -214,7 +214,7 @@
         margin-top: 8px
         width: 22px
         height: 12px
-        bg-image('bulletin')
+        bg-image('./images/bulletin')
         background-size: 22px 12px
         background-repeat: no-repeat
       .bulletin-text        
@@ -309,15 +309,15 @@
               background-size:16px 16px
               background-repeat: no-repeat
               &.decrease
-                bg-image('decrease_2')
+                bg-image('./images/decrease_2')
               &.discount
-                bg-image('discount_2')
+                bg-image('./images/discount_2')
               &.guarantee
-                bg-image('guarantee_2')
+                bg-image('./images/guarantee_2')
               &.invoice
-                bg-image('invoice_2')
+                bg-image('./images/invoice_2')
               &.special
-                bg-image('special_2')
+                bg-image('./images/special_2')
               .text
                 margin-left: 6px
           
