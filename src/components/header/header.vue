@@ -255,7 +255,9 @@
       height: 100%
       overflow: auto
       background: rgba(7,17,27,.8)
-      transform-origin: 50% 0;
+      backdrop-filter:blur(10px)
+      transform-origin: 50% 0
+
       
       // transform: rotateX(0)
       // transition: all .4s

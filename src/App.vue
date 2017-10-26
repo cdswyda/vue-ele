@@ -6,8 +6,6 @@
     <div class="nav-item">评论</div>
     <div class="nav-item">商家</div>
   </nav>
-  <div class="content"></div>
-  <img src="./assets/logo.png">
   <router-view></router-view>
 </div>
 </template>
