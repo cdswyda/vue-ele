@@ -36,6 +36,9 @@ export default {
 </script>
 
 <style lang="stylus">
+// html,body {
+//   height 100%;
+// }
 #app {
   // font-family: 'Avenir', Helvetica, Arial, sans-serif;
   // -webkit-font-smoothing: antialiased;
@@ -45,6 +48,8 @@ export default {
   // margin-top: 60px;
   perspective: 1000px;
   min-height: 100vh;
+  // height 100%;
+  // position relative
 }
 .nav
   display: flex
